@@ -62,7 +62,7 @@ namespace OrderApp.Forms
                 Size = new Size(350, 40),
                 Text = "ℹ️  Please enter your username correctly.\nThis will be displayed as the operator on receipts.",
                 Font = new Font("Segoe UI", 9),
-                ForeColor = Color.FromArgb(149, 165, 166),
+                ForeColor = Color.FromArgb(255, 99, 71),
                 TextAlign = ContentAlignment.MiddleCenter
             };
 

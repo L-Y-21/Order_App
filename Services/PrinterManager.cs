@@ -271,8 +271,8 @@ public async Task<(bool Success, string Message)> PrintInvoiceAsync(Order order,
             void FeedLines(int n) => Cmd(0x1B, 0x64, (byte)n);       // ESC d n
             void FullCut() => Cmd(0x1D, 0x56, 0x00);                 // GS V 0
 
-            void LightFont() => Cmd(0x1B, 0x4D, 0x01);   // ESC M 1 - Font B (lighter)
-            void NormalFont() => Cmd(0x1B, 0x4D, 0x00);  // ESC M 0 - Font A (normal)
+            void LightFont() => Cmd(0x1B, 0x4D, 0x01);   
+            void NormalFont() => Cmd(0x1B, 0x4D, 0x00);
             void DoubleWidthHeight1()=> Cmd(0x1D, 0x21, 0x10);
 
             string Center(string text, int width = LineWidth)

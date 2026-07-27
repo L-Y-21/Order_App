@@ -27,3 +27,4 @@ C:\Users\Administrator\Music\Order_App\obj\Debug\net6.0-windows\OrderApp.pdb
 C:\Users\Administrator\Music\Order_App\obj\Debug\net6.0-windows\OrderApp.genruntimeconfig.cache
 C:\Users\Administrator\Music\Order_App\obj\Debug\net6.0-windows\ref\OrderApp.dll
 C:\Users\Administrator\Music\Order_App\obj\Debug\net6.0-windows\OrderApp.Forms.LoginForm.resources
+C:\Users\Administrator\Music\Order_App\obj\Debug\net6.0-windows\OrderApp.sourcelink.json

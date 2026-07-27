@@ -351,10 +351,10 @@ public async Task<(bool Success, string Message)> PrintInvoiceAsync(Order order,
             FontA();
             NormalSize();
 
-            // TIN - centered, bold
-            AlignCenter();
+            // TIN - removed for non-fiscal order
+            //AlignCenter();
             //BoldOn();
-            Line($"TIN: {tin}");
+            //Line($"TIN: {tin}");
             //BoldOff();
 
             Line(new string('-', LineWidth));
@@ -377,7 +377,7 @@ public async Task<(bool Success, string Message)> PrintInvoiceAsync(Order order,
 
             var leftEquals = new string('=', 18);
             var rightEquals = new string('=', 15);
-            Line($"{leftEquals} CASH INVOICE {rightEquals}");
+            Line($"{leftEquals} ORDER {rightEquals}");
             Line();
 
             Line($"Customer: {order.CustomerNameSnapshot ?? "Walk-in Customer"}");
@@ -398,8 +398,9 @@ public async Task<(bool Success, string Message)> PrintInvoiceAsync(Order order,
             }
 
             Line(new string('-', LineWidth));
-            Line(TwoCol($"TAXBL {order.Items.Count()}", $"*{order.Subtotal,6:F2}"));
-            Line(TwoCol("TAX1 15%", $"*{order.TaxAmount,6:F2}"));
+            Line(TwoCol($"ITEMS {order.Items.Count()}", $"*{order.Subtotal,6:F2}"));
+            // Tax removed for non-fiscal order
+            //Line(TwoCol("TAX1 15%", $"*{order.TaxAmount,6:F2}"));
             Line(new string('-', LineWidth));
 
             // TOTAL - big, same row (uses half-width column since chars are double-wide)
@@ -413,23 +414,23 @@ public async Task<(bool Success, string Message)> PrintInvoiceAsync(Order order,
             // CREDIT# - big, bold, same row
             //BoldOn();
             DoubleWidthHeight1();
-            Line(TwoCol("CASH#", $"*{order.TotalAmount,6:F2}", DoubleWidthLineWidth));
+            Line(TwoCol("AMOUNT", $"*{order.TotalAmount,6:F2}", DoubleWidthLineWidth));
             NormalSize();
             BoldOff();
             Line($"ITEM #");
             Line();
             Line();
 
-            //// ERCA block - centered, bold, double-height, with symbol
-            AlignCenter();
-            BoldOn();
+            //// ERCA block removed for non-fiscal order
+            //AlignCenter();
+            //BoldOn();
             //DoubleHeight();
             //Line("\x10 ERCA");
-            NormalSize();
-            BoldOff();
+            //NormalSize();
+            //BoldOff();
             //Line(ercaCode);
-            Line();
-            AlignLeft();
+            //Line();
+            //AlignLeft();
 
             // Feed + cut
             FeedLines(8);

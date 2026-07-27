@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\Music\\Order_App\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{250CD2A6-86E8-42CC-AB99-B66AFE867284}|OrderApp.csproj|c:\\users\\administrator\\music\\order_app\\services\\printermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{250CD2A6-86E8-42CC-AB99-B66AFE867284}|OrderApp.csproj|solutionrelative:services\\printermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{250CD2A6-86E8-42CC-AB99-B66AFE867284}|OrderApp.csproj|c:\\users\\administrator\\music\\order_app\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{250CD2A6-86E8-42CC-AB99-B66AFE867284}|OrderApp.csproj|solutionrelative:forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{250CD2A6-86E8-42CC-AB99-B66AFE867284}|OrderApp.csproj|c:\\users\\administrator\\music\\order_app\\services\\printermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{250CD2A6-86E8-42CC-AB99-B66AFE867284}|OrderApp.csproj|solutionrelative:services\\printermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{250CD2A6-86E8-42CC-AB99-B66AFE867284}|OrderApp.csproj|c:\\users\\administrator\\music\\order_app\\models\\orderprinter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 58,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,6 +70,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainForm.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Music\\Order_App\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Music\\Order_App\\Forms\\MainForm.cs",
+              "RelativeToolTip": "Forms\\MainForm.cs",
+              "ViewState": "AgIAACEMAAAAAAAAAAAcwDAMAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T06:49:47.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PrinterManager.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Music\\Order_App\\Services\\PrinterManager.cs",
+              "RelativeDocumentMoniker": "Services\\PrinterManager.cs",
+              "ToolTip": "C:\\Users\\Administrator\\Music\\Order_App\\Services\\PrinterManager.cs",
+              "RelativeToolTip": "Services\\PrinterManager.cs",
+              "ViewState": "AgIAANoBAAAAAAAAAAAQwPcBAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T13:18:03.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "OrderPrinter.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\Music\\Order_App\\Models\\OrderPrinter.cs",
@@ -78,21 +104,7 @@
               "RelativeToolTip": "Models\\OrderPrinter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-24T12:13:33.873Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainForm.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Music\\Order_App\\Forms\\MainForm.cs",
-              "RelativeDocumentMoniker": "Forms\\MainForm.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Music\\Order_App\\Forms\\MainForm.cs",
-              "RelativeToolTip": "Forms\\MainForm.cs",
-              "ViewState": "AgIAAEsHAAAAAAAAAAAIwFoHAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-09T06:49:47.029Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-24T12:13:33.873Z"
             },
             {
               "$type": "Document",
@@ -164,21 +176,7 @@
               "RelativeToolTip": "Data\\DBManager.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAowBIAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T11:36:06.761Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PrinterManager.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Music\\Order_App\\Services\\PrinterManager.cs",
-              "RelativeDocumentMoniker": "Services\\PrinterManager.cs",
-              "ToolTip": "C:\\Users\\Administrator\\Music\\Order_App\\Services\\PrinterManager.cs",
-              "RelativeToolTip": "Services\\PrinterManager.cs",
-              "ViewState": "AgIAAJQBAAAAAAAAAAAvwKQBAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-09T13:18:03.122Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-13T11:36:06.761Z"
             },
             {
               "$type": "Document",
@@ -202,7 +200,8 @@
               "RelativeToolTip": "Forms\\LoginForm.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAswB0AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-09T13:01:28.66Z"
+              "WhenOpened": "2026-07-09T13:01:28.66Z",
+              "EditorCaption": ""
             }
           ]
         },

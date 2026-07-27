@@ -41,24 +41,6 @@ namespace OrderApp.Services
             }
         }
 
-
-        public async Task<bool> SendBytesToIpPrinterAsync(string ipAddress, byte[] bytes)
-        {
-            try
-            {
-                using var client = new System.Net.Sockets.TcpClient();
-                await client.ConnectAsync(ipAddress, 9100);
-                using var stream = client.GetStream();
-                await stream.WriteAsync(bytes, 0, bytes.Length);
-                await stream.FlushAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         public async Task<List<PrinterInfo>> GetAvailablePrintersAsync()
         {
             // Cache for 30 seconds to avoid excessive checks
@@ -229,27 +211,10 @@ public async Task<(bool Success, string Message)> PrintInvoiceAsync(Order order,
         // Check printer availability
         if (!string.IsNullOrEmpty(printerName))
         {
-            // First check if printer exists in database and get its IP
-            var orderPrinters = await _db.GetOrderPrintersAsync();
-            var dbPrinter = orderPrinters.FirstOrDefault(p => p.PrinterName == printerName);
-
-            if (dbPrinter != null && !string.IsNullOrEmpty(dbPrinter.IpAddress))
+            var isAvailable = await IsPrinterAvailableAsync(printerName);
+            if (!isAvailable)
             {
-                // Check if printer is online by pinging its IP
-                var isOnline = await CheckPrinterByIpAsync(dbPrinter.IpAddress);
-                if (!isOnline)
-                {
-                    return (false, $"Printer '{printerName}' (IP: {dbPrinter.IpAddress}) is not available or offline");
-                }
-            }
-            else
-            {
-                // Fallback to system printer check
-                var isAvailable = await IsPrinterAvailableAsync(printerName);
-                if (!isAvailable)
-                {
-                    return (false, $"Printer '{printerName}' is not available or offline");
-                }
+                return (false, $"Printer '{printerName}' is not available or offline");
             }
         }
 
@@ -265,21 +230,7 @@ public async Task<(bool Success, string Message)> PrintInvoiceAsync(Order order,
 
             byte[] receiptBytes = BuildEscPosReceipt(order, company, operatorName);
 
-            // Check if this is a database printer with IP address
-            var orderPrinters = await _db.GetOrderPrintersAsync();
-            var dbPrinter = orderPrinters.FirstOrDefault(p => p.PrinterName == printerName);
-
-            bool sent;
-            if (dbPrinter != null && !string.IsNullOrEmpty(dbPrinter.IpAddress))
-            {
-                // Send via TCP to IP address (port 9100 for ESC/POS)
-                sent = await SendBytesToIpPrinterAsync(dbPrinter.IpAddress, receiptBytes);
-            }
-            else
-            {
-                // Send via Windows print spooler
-                sent = RawPrinterHelper.SendBytesToPrinter(printerName, receiptBytes);
-            }
+            bool sent = RawPrinterHelper.SendBytesToPrinter(printerName, receiptBytes);
 
             if (!sent)
             {

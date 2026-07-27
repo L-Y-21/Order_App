@@ -117,7 +117,7 @@ namespace OrderApp.Forms
 
                 await LoadItemsAsync();
                 await LoadCustomersForComboAsync();
-                await LoadPrintersAsync();
+                LoadPrinters();
                 UpdateCartDisplay();
                 UpdateStatus("Ready - Receipt Printer enabled");
 
@@ -1881,29 +1881,56 @@ namespace OrderApp.Forms
             }
         }
 
-        private async Task LoadPrintersAsync()
+        private void LoadPrinters()
         {
-            if (receiptPrinterComboBox == null || _db == null) return;
+            if (receiptPrinterComboBox == null) return;
 
             receiptPrinterComboBox.Items.Clear();
 
-            try
+            var defaultPrinter = new System.Drawing.Printing.PrintDocument().PrinterSettings.PrinterName;
+            var installedPrinters = System.Drawing.Printing.PrinterSettings.InstalledPrinters;
+
+            int selectedIndex = -1;
+            int defaultIndex = -1;
+            int index = 0;
+
+            foreach (string printerName in installedPrinters)
             {
-                var orderPrinters = await _db.GetOrderPrintersAsync();
+                receiptPrinterComboBox.Items.Add(printerName);
 
-                foreach (var printer in orderPrinters)
+                string lowerName = printerName.ToLower();
+                if (lowerName.Contains("pos") ||
+                    lowerName.Contains("thermal") ||
+                    lowerName.Contains("xprinter") ||
+                    lowerName.Contains("epson") ||
+                    lowerName.Contains("zjiang") ||
+                    lowerName.Contains("usb") ||
+                    lowerName.Contains("rp80") ||
+                    lowerName.Contains("rp58") ||
+                    lowerName.Contains("receipt"))
                 {
-                    receiptPrinterComboBox.Items.Add(printer.PrinterName);
+                    if (selectedIndex == -1)
+                    {
+                        selectedIndex = index;
+                    }
                 }
 
-                if (receiptPrinterComboBox.Items.Count > 0)
+                if (printerName == defaultPrinter)
                 {
-                    receiptPrinterComboBox.SelectedIndex = 0;
+                    defaultIndex = index;
                 }
+
+                index++;
             }
-            catch (Exception ex)
+
+            if (selectedIndex == -1)
             {
-                MessageBox.Show($"Error loading printers: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                selectedIndex = defaultIndex;
+            }
+
+            if (receiptPrinterComboBox.Items.Count > 0)
+            {
+                receiptPrinterComboBox.SelectedIndex = selectedIndex >= 0 ? selectedIndex : 0;
             }
         }
 

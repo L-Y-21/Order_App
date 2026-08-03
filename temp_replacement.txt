@@ -1,0 +1,26 @@
+        // Check printer availability
+        if (!string.IsNullOrEmpty(printerName))
+        {
+            // First check if printer exists in database and get its IP
+            var orderPrinters = await _db.GetOrderPrintersAsync();
+            var dbPrinter = orderPrinters.FirstOrDefault(p => p.PrinterName == printerName);
+
+            if (dbPrinter != null && !string.IsNullOrEmpty(dbPrinter.IpAddress))
+            {
+                // Check if printer is online by pinging its IP
+                var isOnline = await CheckPrinterByIpAsync(dbPrinter.IpAddress);
+                if (!isOnline)
+                {
+                    return (false, $"Printer '{printerName}' (IP: {dbPrinter.IpAddress}) is not available or offline");
+                }
+            }
+            else
+            {
+                // Fallback to system printer check
+                var isAvailable = await IsPrinterAvailableAsync(printerName);
+                if (!isAvailable)
+                {
+                    return (false, $"Printer '{printerName}' is not available or offline");
+                }
+            }
+        }
